@@ -1,0 +1,12 @@
+<h3><%= @item.name %></h3>
+<div>
+  <% if @item.image.present? %>
+    <p><%= image_tag @item.image %></p>
+  <% end %>
+  <h5>Price</h5>
+  <p><%= number_to_currency @item.price %></p>
+  <h5>Brand</h5>
+  <p><%= @item.brand %></p>
+  <h5>Description</h5>
+  <p><%= @item.description %></p>
+</div>

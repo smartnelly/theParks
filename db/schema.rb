@@ -10,9 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_04_27_051756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_items", id: false, force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "item_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.text "name"
+    t.integer "price"
+    t.text "brand"
+    t.text "description"
+    t.text "image"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items_orders", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "order_id"
+  end
+
+  create_table "items_users", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders_users", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.text "name"
+    t.text "username"
+    t.text "email"
+    t.text "password_digest"
+    t.string "mobile"
+    t.text "street"
+    t.text "suburb"
+    t.string "city"
+    t.string "country"
+    t.string "postcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
+  end
 
 end

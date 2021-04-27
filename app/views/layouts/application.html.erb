@@ -4,12 +4,25 @@
     <title>TheParks</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
-
   <body>
-    <%= yield %>
+    <div class="container">
+      <nav>
+        <%= link_to "Home", home_path %>
+        <%= link_to "Items", items_path %>
+        <% if @current_user.present? %>
+          <%= link_to "Logout #{ @current_user.username.upcase}", login_path, :method => 'delete' %>
+          <%= link_to "Your Order", new_item_path %>
+        <% else %>
+          <%= link_to "Sign up", new_user_path %>
+          <%= link_to "Sign in", login_path %>
+        <% end %>
+      </nav>
+      <%= yield %>
+      <footer></footer>
+    </div>
   </body>
 </html>

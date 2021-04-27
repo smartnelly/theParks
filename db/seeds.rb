@@ -11,6 +11,7 @@
 User.destroy_all
 u1 = User.create :name => 'Mandy', :username => 'mandy', :email => 'mandy@gmail.com', :password => 'chicken',  :mobile => '0435608320', :street => '9a David Pl', :suburb => 'Peakhurst', :city => 'Sydney', :country => 'Australia', :postcode => '2146'
 u2 = User.create :name => 'Alex', :username => 'alex', :email => 'alex@gmail.com', :password => 'chicken',  :mobile => '0425496576', :street => '6-8 Meryla St', :suburb => 'Burwood', :city => 'Sydney', :country => 'Australia', :postcode => '2134'
+u3 = User.create :name => 'Admin', :username => 'admin', :email => 'admin@gmail.com', :password => 'chicken', :admin => true
 puts "#{ User.count } users"
 
 
@@ -49,13 +50,5 @@ u2.items << i4 << i5 << i6
 
 
 
-# items and categories
-puts "items and categories"
 
-i1.categories << c1
-i2.categories << c1
-i3.categories << c2
-i4.categories << c2 
-i5.categories << c3
-i6.categories << c3 
 

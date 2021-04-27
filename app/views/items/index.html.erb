@@ -1,0 +1,10 @@
+<h3>All items</h3>
+<!-- loops through all the  -->
+<% @items.each do |item| %>
+  <h4><%=  link_to item.name, item_path(item) %></h4>
+  <% if item.image.present? %>
+    <%= link_to item_path(item) do %>
+      <%= image_tag item.image %>
+    <% end %>
+  <% end %>
+<% end %>
