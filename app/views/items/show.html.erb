@@ -1,39 +1,39 @@
-<h3><%= @item.name %></h3>
+<h3 class="text-muted"><%= @item.name %></h3>
 <%# admin page view %>
 <% if @current_user.present? && @current_user.admin == true %>
   <p><%= link_to 'Edit Item', edit_item_path %></p>
   <p><%= link_to 'Remove Item', item_path(@item.id), :method => 'delete', :data => {:confirm => 'Are you sure you want to remove this item?'}%></p>
   <div>
-    <h5>Price</h5>
-    <p><%= number_to_currency @item.price %></p>
-    <h5>Brand</h5>
-    <p><%= @item.brand %></p>
-    <h5>Description</h5>
-    <p><%= @item.description %></p>
     <% if @item.image.present? %>
       <% if @item.image.start_with?('https') %>
         <p><%= image_tag @item.image %></p>
       <% else %>
         <p><%= cl_image_tag @item.image %></p>
       <% end %>
+      <h5>Price</h5>
+      <p><%= number_to_currency @item.price %></p>
+      <h5>Brand</h5>
+      <p><%= @item.brand %></p>
+      <h5>Description</h5>
+      <p><%= @item.description %></p>
     <% end %>
   </div>
   <%# user page view %>
 <% else %>
   <div>
+    <% if @item.image.present? %>
+      <% if @item.image.start_with?('https') %>
+        <p><%= image_tag @item.image, :class => "item-show"%></p>
+      <% else %>
+        <p><%= cl_image_tag @item.image, :class => "item-show" %></p>
+      <% end %>
+    <% end %>
     <h5>Price</h5>
     <p><%= number_to_currency @item.price %></p>
     <h5>Brand</h5>
     <p><%= @item.brand %></p>
     <h5>Description</h5>
     <p><%= @item.description %></p>
-    <% if @item.image.present? %>
-      <% if @item.image.start_with?('https') %>
-        <p><%= image_tag @item.image %></p>
-      <% else %>
-        <p><%= cl_image_tag @item.image %></p>
-      <% end %>
-    <% end %>
-    <%= button_to 'add to cart', orders_path(:item_id => @item.id) %>
+    <%= button_to 'add to cart', orders_path(:item_id => @item.id), :class => "btn btn-primary" %>
   </div>
 <% end %>

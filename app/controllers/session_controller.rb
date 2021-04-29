@@ -4,7 +4,11 @@ def new
 
   def create
     user = User.find_by :email => params[:email]
-    if user.present? && user.authenticate(params[:password])
+
+if !user.present?
+      redirect_to new_user_path 
+else
+  if user.present? && user.authenticate(params[:password])
       if user.admin == true
         session[:user_id] = user.id
         redirect_to items_path
@@ -17,6 +21,7 @@ def new
       redirect_to login_path # no match, try again
     end
   end
+end
 
   def destroy
     session[:user_id] = nil

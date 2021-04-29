@@ -1,10 +1,16 @@
+<br>
 <% if  @current_user.present? && @current_user.admin == true %>
   <% @categories.each do |category| %>
-    <h4><%= category.name %></h4>
+    <%= link_to category.name.upcase, category_path(category.id), :class => "btn btn-secondary btn-lg"%>
+    <br>
+    <br>
   <% end %>
-  <p><%= link_to 'Add New Category', new_category_path %></p>
+  <p><%= link_to 'Add New Category', new_category_path, :class => "btn btn-primary"%></p>
 <% else %>
   <% @categories.each do |category| %>
-    <h4><%= category.name %></h4>
+    <h4>
+      <%= link_to category.name.upcase, category_path(category.id), :class => "text-muted"%>
+    </h4>
+    <br>
   <% end %>
 <% end %>

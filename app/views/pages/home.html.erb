@@ -9,16 +9,3 @@
     The Park's goal is to establish a unique and dedicated platform to share with their fans including the latest news and trends in the sneaker industry. Not only is the Parks a market place where you can obtain your most wanted sneakers, but it is also a social space where all sneakerheads, seasoned or young can come together and share their stories. 
     We are not just a market place, we integrate fashion with daily living, we are The Parks.</p>
 </div>
-<!-- loops through every item -->
-<div class="container">
-  <div>
-    <% @items.each do |item| %>
-      <div>
-        <h4><%= link_to item.name, item_path(item) %></h4>
-        <% if item.image.present? %>
-          <a href="<%= item_path(item) %>"><img src="<%= item.image %>" alt="edit"></a>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
