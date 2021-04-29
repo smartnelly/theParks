@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find params[:id]
-    @items = Item.all.@category(:name)
+    @items = Item.all(:name)
   end
 
   def new

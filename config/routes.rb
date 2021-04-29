@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root :to => 'pages#home'
   get '/home' => 'pages#home'
+  get '/contact' => 'pages#contact'
   
   resources :users, :only => [:index, :new, :create]
   resources :items
   resources :categories
-  resources :orders
 
 
   # Sessions routes
