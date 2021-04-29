@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find params[:id]
     # @items = Item.all(:name)
-    # not finish
+    #bug
 redirect_to items_path
 
   end

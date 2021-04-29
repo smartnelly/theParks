@@ -43,10 +43,14 @@ puts "#{ Category.count } categories"
 
 # Associations #######################
 
-# users and items
-puts "users and items"
-u1.items << i1 << i2 << i3 
-u2.items << i4 << i5 << i6
+# items and categories
+
+i1.categories << c1 
+i2.categories << c1 
+i3.categories << c2 
+i4.categories << c2
+i5.categories << c3
+i6.categories << c3 
 
 
 
