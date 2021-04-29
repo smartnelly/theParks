@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 2021_04_27_051756) do
     t.integer "price"
     t.text "brand"
     t.text "description"
-    t.text "image"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "image"
   end
 
   create_table "items_orders", force: :cascade do |t|

@@ -1,0 +1,13 @@
+<% if  @current_user.orders.present?%>
+  <h2>My Orders</h2>
+  <% @orders.each do |order| %>
+    <p><%= link_to 'Order No: ', order_path(order) %>
+    </p>
+    <p><%= link_to order.id, order_path(order) %></p>
+    <p>Total Price:
+    </p>
+    <p><%= number_to_currency order.calculate_price %></p>
+  <% end %>
+<% else %>
+  <h1>Coming SOON</h1>
+<% end %>

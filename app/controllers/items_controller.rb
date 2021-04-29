@@ -1,27 +1,27 @@
 class ItemsController < ApplicationController
-
   def index
     @items = Item.all
+    @categories = Category.all
   end
+
 
   def show
     @item = Item.find params[:id]
-    @categories = Category.all
-    @items = Item.all.order(:name)
   end
+
 
   def new
     @item= Item.new
   end
 
   def create
-    @item = Item.new item_params
+    item = Item.new item_params
      if params[:file].present?
       req = Cloudinary::Uploader.upload(params[:file])
-      @item.image = req["public_id"]
-      @item.save
+      item.image = req["public_id"]
+      item.save
     end
-    redirect_to @item
+    redirect_to items_path
   end
 
 
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
     end
     item.update_attributes item_params
     item.save
-    redirect_to item
+    redirect_to items_path
   end
 
   def destroy
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   end
   private
 
-  def category_params
+  def item_params
     params.require(:item).permit(:name, :price, :brand, :description, :images)
   end
 end

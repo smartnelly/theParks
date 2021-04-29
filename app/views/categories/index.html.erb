@@ -1,0 +1,10 @@
+<% if  @current_user.present? && @current_user.admin == true %>
+  <% @categories.each do |category| %>
+    <h4><%= category.name %></h4>
+  <% end %>
+  <p><%= link_to 'Add New Category', new_category_path %></p>
+<% else %>
+  <% @categories.each do |category| %>
+    <h4><%= category.name %></h4>
+  <% end %>
+<% end %>

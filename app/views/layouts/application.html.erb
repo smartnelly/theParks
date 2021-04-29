@@ -7,21 +7,70 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= cloudinary_js_config %>
   </head>
   <body>
     <div class="container">
-      <nav>
-        <%= link_to "Home", home_path %>
-        <%= link_to "Items", items_path %>
-        <% if @current_user.present? %>
-          <%= link_to "Logout #{ @current_user.username.upcase}", login_path, :method => 'delete' %>
-          <%= link_to "Your Order", new_item_path %>
-        <% else %>
-          <%= link_to "Sign up", new_user_path %>
-          <%= link_to "Sign in", login_path %>
-        <% end %>
+      <div class="p-3 mb-2 bg-dark text-white">
+        <p class="text-center">Free express shipping on all orders $200AUD+ | DHL available for all international orders</p>
+      </div>
+      <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: rgba(176,196,222,0.1);">
+        <a class="navbar-brand" href="<%= root_path %>">
+          <i class="fas fa-camera"></i>
+          TheParks</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <%# nav home %>
+            <li class="nav-item ">
+              <a class="nav-link" href="<%= root_path %>">Home</a>
+            </li>
+            <%# nav items %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= items_path %>">Items</a>
+            </li>
+            <%# nav categories %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= categories_path %>">Categories</a>
+            </li>
+            <% if @current_user.present? %>
+              <%# admin page view %>
+              <%# nav Logout %>
+              <% if  @current_user.admin == true %>
+                <%# nav User List %>
+                <li class="nav-item">
+                  <a class="nav-link" href="<%= users_path %>">User List</a>
+                </li>
+                <%# nav Logout %>
+                <li class="nav-item">
+                  <a class="nav-link" href="<%= login_path %>" data-method="delete">Sign Out  <%=  @current_user.username.upcase%></a>
+                </li>
+              <% else %>
+                <%# nav order List %>
+                <li class="nav-item">
+                  <a class="nav-link" href="<%= orders_path %>">Your Order</a>
+                </li>
+                <%# nav Logout %>
+                <li class="nav-item">
+                  <a class="nav-link" href="<%= login_path %>" data-method="delete">Sign Out  <%=  @current_user.username.upcase%></a>
+                </li>
+              <% end %>
+            <%else  %>
+              <%# nav Sign Up %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= new_user_path %>">Sign UP</a>
+              </li>
+              <%# nav Sign IN %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= login_path %>">Sing IN</a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </nav>
-      <%= yield %>
+      <div><%= yield %></div>
       <footer></footer>
     </div>
   </body>

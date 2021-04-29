@@ -1,10 +1,25 @@
 <h3>All items</h3>
 <!-- loops through all the  -->
-<% @items.each do |item| %>
-  <h4><%=  link_to item.name, item_path(item) %></h4>
-  <% if item.image.present? %>
-    <%= link_to item_path(item) do %>
-      <%= image_tag item.image %>
+<%# admin page view %>
+<% if @current_user.present? && @current_user.admin == true %>
+  <% @items.each do |item| %>
+    <h4><%=  link_to item.name, item_path(item) %></h4>
+    <p><%= link_to 'Edit Item', edit_item_path(item) %></p>
+    <p><%= link_to 'Remove Item', item_path(item.id), :method => 'delete', :data => {:confirm => 'Are you sure you want to remove this item?'}%></p>
+  <% end %>
+  <h1><%= link_to 'Add NEW Item', new_item_path %></h1>
+  <%# user page view %>
+<% else %>
+  <% @items.each do |item| %>
+    <h4><%=  link_to item.name, item_path(item) %></h4>
+    <% if item.image.present? %>
+      <%= link_to item_path(item) do %>
+        <% if item.image.start_with?('https') %>
+          <%= image_tag item.image %>
+        <% else %>
+          <%= cl_image_tag item.image %>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
