@@ -4,10 +4,13 @@
 <% if @current_user.present? && @current_user.admin == true %>
   <% @items.each do |item| %>
     <h4><%=  link_to item.name, item_path(item) %></h4>
-    <p><%= link_to 'Edit Item', edit_item_path(item) %></p>
-    <p><%= link_to 'Remove Item', item_path(item.id), :method => 'delete', :data => {:confirm => 'Are you sure you want to remove this item?'}%></p>
+    <button class = "small-btn"><%= link_to 'Edit Item', edit_item_path(item) %></button>
+    <button class = "small-btn"><%= link_to 'Remove Item', item_path(item.id), :method => 'delete', :data => {:confirm => 'Are you sure you want to remove this item?'}%></button>
+    <br>
+    <br>
+    <br>
   <% end %>
-  <h1><%= link_to 'Add NEW Item', new_item_path %></h1>
+  <button><%= link_to 'Add NEW Item', new_item_path %></button>
   <%# user page view %>
 <% else %>
   <% @items.each do |item| %>
