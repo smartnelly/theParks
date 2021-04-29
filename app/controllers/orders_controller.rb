@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   def create
     item = Item.find params[:item_id]
     
-    @current_order.items << item
+    # @current_order.items << item
 
     redirect_to orders_path
   end

@@ -34,6 +34,6 @@
     <p><%= @item.brand %></p>
     <h5>Description</h5>
     <p><%= @item.description %></p>
-    <%= button_to 'add to cart', items_path(:item_id => @item.id), :class => "btn btn-primary" %>
+    <%= button_to 'add to cart', orders_path(:item_id => @item.id), :class => "btn btn-primary" %>
   </div>
 <% end %>
