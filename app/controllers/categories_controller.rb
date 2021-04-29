@@ -5,7 +5,10 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find params[:id]
-    @items = Item.all(:name)
+    # @items = Item.all(:name)
+    # not finish
+redirect_to items_path
+
   end
 
   def new
