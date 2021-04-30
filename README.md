@@ -1,4 +1,4 @@
-# theParks
+# [theParks](https://theparks.herokuapp.com/)
 
 theParks is a fashion shop located in Sydney. This project we helped them to build a online platform, and also this was bulit as the second project in the SEI43 course at General Assembly. We were given 1 week to build an application using Ruby on Rails and any other resources we like. Check out the application [here](https://theparks.herokuapp.com/).
 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :categories
 
 
-  # Sessions routes
+  # Login Sessions
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
