@@ -45,12 +45,12 @@ puts "#{ Category.count } categories"
 
 # items and categories
 
-i1.categories << c1 
-i2.categories << c1 
-i3.categories << c2 
-i4.categories << c2
-i5.categories << c3
-i6.categories << c3 
+c1.items << i1 
+c1.items << i2 
+c2.items << i3 
+c2.items << i4
+c3.items << i5
+c3.items << i6 
 
 
 

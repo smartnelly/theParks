@@ -1,6 +1,22 @@
-<% @category.items.each do |item| %>
-  <h4><%= link_to item.name, item_path(item) %></h4>
-  <% if item.image.present? %>
-    <a href="<%= item_path(item) %>"><img src="<%= item.image %>"></a>
-  <% end %>
-<% end %>
+<br>
+<h3 class = "text-muted"><%= @category.name.upcase%></h3>
+<div class="container">
+  <div class='row'>
+    <% @items.each do |item| %>
+      <div class="col-md-4 item-box">
+        <% if item.image.present? %>
+          <%= link_to item_path(item) do %>
+            <% if item.image.start_with?('https') %>
+              <%= image_tag item.image, :class => "item-index" %>
+            <% else %>
+              <%= cl_image_tag item.image, :class => "item-index" %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <div class="row justify-content-center row-eq-height">
+          <h4><%=  link_to item.name, item_path(item), :class => "text-muted" %></h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
